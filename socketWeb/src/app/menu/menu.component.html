@@ -1,0 +1,20 @@
+<ngx-spinner bdColor="rgba(180,180,180,0.5)" size="large" color="#ff4242" type="ball-clip-rotate-multiple">
+</ngx-spinner>
+
+<body class="fondo">
+    <h1>Usuarios registrados</h1>
+    <table class="table">
+        <tbody>
+            <tr *ngFor="let item of user">
+                <td>{{item.nombre}}</td><br>
+                <td>{{item.apellido}}</td><br>
+                <td>{{item.email}}</td><br>
+                <td>{{item.edad}}</td><br>
+                <td>
+                    <button class="btn" (click)="edit(item)">Editar</button>
+                    <button class="btn" (click)="deleteuser(item._id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
