@@ -1,34 +1,31 @@
-;
-'use strict'
+  const jwt = require("jsonwebtoken");
 
-const jwt = require('jsonwebtoken')
+  //Middleware(next) nos permite dar paso al siguiente proceso.
+  let autentificar = (req, res, next) => {
+      let token = req.headers.authorization || null;
 
+      jwt.verify(token, process.env.KEY_JWT, (err, decode) => {
+          console.log(token)
+          if (err) {
+              return res.status(400).json({
+                  data: err,
+                  msg: "Invalid token",
+              });
+          } else {
+              req.decode = decode;
 
-let autentificar = (req, res, next) => {
-    let token = req.headers.authorization || null
-    jwt.verify(token, process.env.KEY_JWT, (err, decode) => {
-        if (err) {
-            console.log(process.env.KEY_JWT)
-            console.log(err)
-            return res.status(404).json({
-                data: null,
-                msg: 'Token Inválido'
-            })
-        } else {
-            req.decode = decode
-            console.log(decode)
-            console.log(process.env.KEY_JWT)
-            let token = jwt.sign({ data: decode.data }, process.env.KEY_JWT, {
-                algorithm: 'HS256',
-                expiresIn: 6000
-            });
-            req.decode = decode;
-            req.token = token;
+              let token = jwt.sign({ data: decode.data }, process.env.KEY_JWT, {
+                  algorithm: "HS256",
+                  expiresIn: 300,
+              });
 
-            next();
-        }
-    })
-}
-module.exports = {
-    autentificar
-}
+              req.token = token;
+
+              next();
+          }
+      });
+  };
+
+  module.exports = {
+      autentificar
+  }

@@ -1,5 +1,5 @@
 <form [formGroup]="userForm" class="form">
-    <h2>Crear usuario</h2>
+    <h2>Editar usuario</h2>
     <span>Nombre</span>
     <p><input formControlName='nombre' name="nombre" [(ngModel)]="user.nombre" placeholder="nombre"></p>
     <span>Apellido</span>
@@ -10,5 +10,5 @@
     <p><input formControlName='email' name="email" [(ngModel)]="user.email" placeholder="Email"></p>
     <!-- <span>Contraseña</span> -->
     <!-- <p><input formControlName='passw' name="passw" [(ngModel)]="user.passw" placeholder="Passw"></p> -->
-    <button (click)="update(user)">Guardar</button>
+    <button (click)="update()">Guardar</button>
 </form>

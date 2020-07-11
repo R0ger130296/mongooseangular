@@ -1,1 +1,17 @@
-<p>usuarios-nuevo works!</p>
+<ngx-spinner bdColor="rgba(180,180,180,0.5)" size="large" color="#ff4242" type="ball-clip-rotate-multiple">
+</ngx-spinner>
+
+<form [formGroup]="createuserForm" class="form">
+    <h2>Crear usuario</h2>
+    <span>Nombre</span>
+    <p><input formControlName='nombre' name="nombre" placeholder="nombre"></p>
+    <span>Apellido</span>
+    <p><input formControlName='apellido' name="apellido" placeholder="Apellido"></p>
+    <span>Edad</span>
+    <p><input formControlName='edad' name="edad" placeholder="Edad"></p>
+    <span>Email</span>
+    <p><input formControlName='email' name="email" placeholder="Email"></p>
+    <span>Contraseña</span>
+    <p><input formControlName='passw' name="passw" placeholder="Contraseña"></p>
+    <button (click)="createuser()">Guardar</button>
+</form>

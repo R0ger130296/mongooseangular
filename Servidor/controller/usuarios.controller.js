@@ -2,16 +2,17 @@
 'use strict'
 const fs = require('fs'),
     path = require('path'),
-    connetDb = require('../config/db'),
     bcrypt = require('bcrypt'),
-    jwt = require('jsonwebtoken'),
-    usuarios_model = require('../modelos/usuarios.model')
+    jwt = require("jsonwebtoken"),
+    usuarios_model = require('../modelos/usuarios.model');
 
 let getUsuario = (req, res) => {
     usuarios_model.find()
         .then(data => {
             res.status(200).json({
+                msg: 'ok',
                 data: data,
+                transaccion: true
             })
         }).catch(e => {
             res.status(500).json({
@@ -65,24 +66,26 @@ let insertMany = (req, res) => {
 
 //Actualizar uno
 let updateOne = (req, res) => {
-    id = req.params.id,
-        data = req.body.data
-    usuarios_model.updateOne({ '_id': id }, { $set: data })
+    let _id = req.params.id,
+        data = req.body.data;
+
+    usuarios_model.updateOne({ '_id': _id }, { $set: data })
         .then((data) => {
             res.status(200).json({
-                msg: 'ok',
+                ok: true,
                 data: data,
-                transaccion: true
-            })
-        }).catch(e => {
-            res.status(500).json({
-                msg: e,
-                data: null,
-                transaccion: false
-            })
+                msg: "ready",
+                token: req.token,
+            });
         })
-}
-
+        .catch((err) => {
+            res.status(500).json({
+                ok: false,
+                data: null,
+                msg: err,
+            });
+        });
+};
 //buscar por ID
 //pruebale
 let get_usuario_one = (req, res) => {
@@ -144,7 +147,7 @@ let deleteOne = (req, res) => {
 
 //ingresar usuarios con bcryp
 let nuevoUsuario = (req, res) => {
-    let usuario = req.body.usuario
+    let usuario = req.body.data
     usuarios_model.create(usuario)
         .then(data => {
             res.status(200).json({
@@ -164,44 +167,47 @@ let nuevoUsuario = (req, res) => {
 
 
 let login = (req, res) => {
-    let data = req.body.data,
+    let { data } = req.body,
         email = data.email,
         password = data.password;
-    usuarios_model.find({ email }).then((data) => {
+
+    usuarios_model.find({ email })
+        .then((data) => {
             if (data[0].email === email) {
-                let tokenBody = {
+                let token,
+                    tokenBody = {
+                        nombre: data[0].nombre,
                         email: data[0].email,
                         rol: data[0].rol,
-                        name: data[0].name,
-                    },
-                    token = jwt.sign({ data: tokenBody }, process.env.KEY_JWT, {
-                        algorithm: "HS256",
-                        expiresIn: 6000,
-                    });
+                        sessionID: data[0].sessionID,
+                    };
                 bcrypt.compareSync(password, data[0].passw) ?
-                    res.status(200).json({
-                        token,
-                    }) :
+                    ((token = jwt.sign({ data: tokenBody }, process.env.KEY_JWT, console.log(token), {
+                            algorithm: "HS256",
+                            expiresIn: 60000,
+                        })),
+                        res.status(200).json({
+                            transaccion: true,
+                            data: data,
+                            msg: "User OK",
+                            token,
+                        })) :
                     res.status(404).json({
-                        ok: false,
+                        transaccion: false,
                         data: null,
-                        msg: "Password incorrecto",
+                        msg: "Incorrect password",
+                        token: null,
                     });
-            } else {
-                return res.status(404)
             }
         })
         .catch((err) => {
-            return res.status(404).json({
-                ok: false,
+            res.status(404).json({
+                transaccion: false,
                 data: null,
-                msg: "Email incorrecto",
+                msg: "Email not found",
             });
         });
-
 };
-
-
 module.exports = {
     getUsuario,
     insertOne,

@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Socket } from 'ngx-socket-io'
+import { Socket } from 'ngx-socket-io';
+import { PermisosService } from './permisos.service'
 @Injectable()
 export class SocketJWTService extends Socket{
 
-  constructor() { 
-    const token = JSON.parse(sessionStorage.getItem("token1"));
-    console.log(Object.values(token))
-    super({url:'http://localhost:3000',options:{
-       query:`token=${token}`,
-    }
-  });
+  constructor(private permisos:PermisosService) { 
+   super({url:'http://localhost:3500',options:{
+     query:`token=${permisos.obtenerToken()}&sessionID=${permisos.obtenerSession()}`
+     }
+   })
   }
 }

@@ -8,20 +8,23 @@ import { HttpClientModule } from '@angular/common/http';
 import {appRoutingModule} from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { EdituserComponent } from './edituser/edituser.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     EdituserComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     SocketIoModule,
     appRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

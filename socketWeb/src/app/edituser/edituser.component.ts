@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http'
-import { environment} from '../../environments/environment'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router,NavigationEnd} from '@angular/router';
-const updateuser = environment.API_URL+ '/update/';
+import { Router,} from '@angular/router';
+import { UsuarioService } from '../servicios/usuario.service';
+// const updateuser = environment.API_URL+ '/update/';
 @Component({
   selector: 'app-edituser',
   templateUrl: './edituser.component.html',
@@ -13,7 +13,10 @@ const updateuser = environment.API_URL+ '/update/';
 export class EdituserComponent implements OnInit {
 user:any;
 userForm: FormGroup;
-  constructor(private formBuilder: FormBuilder,private http: HttpClient,private router: Router) { 
+  constructor(private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private router: Router,
+    private usuarioService:UsuarioService) { 
     if (sessionStorage.getItem("user")) {
       this.user = JSON.parse(sessionStorage.getItem("user"));
     } else {
@@ -29,7 +32,7 @@ userForm: FormGroup;
       edad:["",Validators.required],
   }); 
   }
-  update(user){
+  update(){
     let nombre =this.userForm.get('nombre').value;
     let apellido =this.userForm.get('apellido').value;
     let edad =this.userForm.get('edad').value;
@@ -43,7 +46,7 @@ userForm: FormGroup;
         timer: 3000
       });
     }else{
-      let loginData = {
+      let Data = {
         data:{
           nombre,
           apellido,
@@ -51,20 +54,12 @@ userForm: FormGroup;
           email
         }
       };
-      this.http.put(updateuser+`${user._id}`,loginData).subscribe(data=>{
-      console.log(Object.values(data).length)
-      if(Object.values(data).length===3){
+     let user= this.usuarioService.put(
+      'update',this.user._id,Data);
+      if (user) {
         this.router.navigate(['/menu']);
-        }else{
-          const Toast = Swal.fire({
-            position: 'top-right',
-            icon:'error',
-            title:'Datos no Actualizados',
-            showConfirmButton: false,
-            timer: 3000
-          });
-        } 
-      });
+        localStorage.clear();
+      }
     }
   }
 }

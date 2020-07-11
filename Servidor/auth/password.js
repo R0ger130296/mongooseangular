@@ -5,20 +5,17 @@ const bcrypt = require('bcrypt')
 
 
 let codificar = (req, res, next) => {
-    let usuario = req.body.usuario || null
-    if (!usuario || !usuario.passw) {
+    let data = req.body.data || null
+    if (!data || !data.passw) {
         return res.status(401).send('usuario o contraseña invalidos')
     } else {
-        let codificarpassword = bcrypt.hashSync(usuario.passw, bcrypt.genSaltSync(10))
+        let codificarpassword = bcrypt.hashSync(data.passw, bcrypt.genSaltSync(10))
         if (codificarpassword) {
-            req.body.usuario.passw = codificarpassword
-            req.body.usuario.createAt = new Date()
-            if (process.env.KEY_JWT) {
-                req.body.sessionID = process.env.KEY_JWT
-                next()
-            } else {
-                return res.status(401).send('sesion invalidos')
-            }
+            req.body.data.passw = codificarpassword
+            req.body.data.createAt = new Date()
+            req.body.data.sessionID = req.sessionID
+            console.log(req.body.data.sessionID);
+            next();
         } else {
             return res.status(401).send('no se encrypto su contraseña')
         }

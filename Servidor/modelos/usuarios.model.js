@@ -14,4 +14,4 @@
       rol: { type: String },
   });
 
-  module.exports = mongoose.model('Usuarios', usuario_model);
+  module.exports = mongoose.model('usuarios', usuario_model);

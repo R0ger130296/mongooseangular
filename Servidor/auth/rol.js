@@ -37,15 +37,15 @@ let client = (req, res, next) => {
             });
         } else {
             switch (decode.data.rol) {
-                case "cliente":
-                    console.log("Bienvenido cliente.");
+                case "estuadiante":
+                    console.log("Bienvenido Estudiante.");
                     next();
                     break;
                 default:
                     res.status(401).json({
                         ok: false,
                         data: null,
-                        msg: "No tienes Permisos para usar esta app",
+                        msg: "tienes Permisos ciertas cosas",
                     });
             }
         }
