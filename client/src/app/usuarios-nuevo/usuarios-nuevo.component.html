@@ -13,5 +13,10 @@
     <p><input formControlName='email' name="email" placeholder="Email"></p>
     <span>Contraseña</span>
     <p><input formControlName='passw' name="passw" placeholder="Contraseña"></p>
+    <span>Verificar Contraseña</span>
+    <p><input formControlName='verifypassw' name="verifypassw" placeholder="Repita su contraseña"></p>
+    <span>Foto</span>
+    <p><input type="file" formControlName='file' name="file" (change)="changeFile($event)" placeholder="file"></p>
+    <img width="25%" height="%25" src="{{verFile}}" alt="">
     <button (click)="createuser()">Guardar</button>
 </form>

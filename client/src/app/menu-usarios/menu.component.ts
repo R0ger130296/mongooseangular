@@ -4,6 +4,7 @@ import { Router,NavigationEnd} from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { WebServiceService } from '../servicios/web.service.service';
 import { GeneralService } from '../servicios/general.service'
+import { FileService } from '../servicios/file.service'
 // const getusuarios= environment.API_URL+ '/usuarios';
 // const deleteusuarios = environment.API_URL+ '/usuario_delete/';
 
@@ -16,12 +17,14 @@ import { GeneralService } from '../servicios/general.service'
 export class MenuComponent implements OnInit {
   navigationSubcription;
   user=[];
+  file:any;
   private url: string;
   constructor(private spinner: NgxSpinnerService,
     private http: HttpClient,
     private router: Router,
     private servidor: WebServiceService,
-    private usuarioServic:GeneralService) {
+    private usuarioServic:GeneralService,
+    private fileService: FileService) {
       this.url=servidor.getUrl();
     this.navigationSubcription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
@@ -44,6 +47,10 @@ export class MenuComponent implements OnInit {
         console.log(data)
         data.data.forEach((element) => {
           this.user.push(element);
+          this.file=(element.file)
+          this.file=this.fileService.obtenerFile(
+            'galeria',this.file
+          )
         });
       });
   }

@@ -5,7 +5,7 @@ export interface Usuario {
     edad:number;
     email:string;
     passw?:string;
-    foto:string
+    file:string
     rol:string;
     sessionID?:string;
     createAt?:string
