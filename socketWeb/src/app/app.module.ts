@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { EdituserComponent } from './edituser/edituser.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MenuCursosComponent } from './menu-cursos/menu-cursos.component';
+import { EditCursoComponent } from './edit-curso/edit-curso.component';
+import { NuevoCursoComponent } from './nuevo-curso/nuevo-curso.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +19,8 @@ import { MenuCursosComponent } from './menu-cursos/menu-cursos.component';
     EdituserComponent,
     DashboardComponent,
     MenuCursosComponent,
+    EditCursoComponent,
+    NuevoCursoComponent,
   ],
   imports: [
     BrowserModule,

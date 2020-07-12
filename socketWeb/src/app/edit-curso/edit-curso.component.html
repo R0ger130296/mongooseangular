@@ -1,0 +1,12 @@
+<form [formGroup]="cursoForm" class="form">
+    <h2>Editar Curso</h2>
+    <span>titulo</span>
+    <p><input formControlName='titulo' name="nombre" [(ngModel)]="curso.titulo" placeholder="nombre"></p>
+    <span>profesor</span>
+    <p><input formControlName='profesor' name="apellido" [(ngModel)]="curso.profesor" placeholder="Apellido"></p>
+    <span>description</span>
+    <p><input formControlName='description' name="edad" [(ngModel)]="curso.description" placeholder="Edad"></p>
+    <span>asignatura</span>
+    <p><input formControlName='asignatura' name="email" [(ngModel)]="curso.asignatura" placeholder="Email"></p>
+    <button (click)="update()">Guardar</button>
+</form>

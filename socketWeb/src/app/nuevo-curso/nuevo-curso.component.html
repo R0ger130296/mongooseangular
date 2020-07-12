@@ -1,0 +1,12 @@
+<form [formGroup]="createcursoForm" class="form">
+    <h2>Crear Curso</h2>
+    <span>Titulo</span>
+    <p><input formControlName='titulo' name="titulo" placeholder="titulo"></p>
+    <span>Profesor</span>
+    <p><input formControlName='profesor' name="profesor" placeholder="profesor"></p>
+    <span>Description</span>
+    <p><input formControlName='description' name="description" placeholder="descripción"></p>
+    <span>Asignatura</span>
+    <p><input formControlName='asignatura' name="asignatura" placeholder="asignatura"></p>
+    <button (click)="createcurso()">Guardar</button>
+</form>

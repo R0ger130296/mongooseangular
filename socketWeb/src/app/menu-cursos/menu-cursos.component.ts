@@ -54,4 +54,20 @@ export class MenuCursosComponent implements OnInit {
         });
       });
   }
+  public edit(curso): void {
+    sessionStorage.setItem('curso', JSON.stringify(curso));
+    this.router.navigate(['/edit-curso']);
+  }
+
+  deletecursor(_id) {
+    this.usuarioServic.delete('curso_delete', _id);
+    this.spinner.show();
+        setTimeout(() => {
+          this.spinner.hide();
+        }, 800)
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/cursos']);
+        });
+  }
 }
+

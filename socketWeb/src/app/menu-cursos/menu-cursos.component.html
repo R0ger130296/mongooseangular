@@ -4,7 +4,7 @@
 <body *ngIf="admi" class="btn">
     <h1>Cursos registrados</h1>
     <table class="table">
-        <button class="btn">Crear nuevo usuario</button>
+        <button routerLink="/crear-curso" class="btn">Crear nuevo usuario</button>
         <tbody>
             <tr *ngFor="let item of curso">
                 <td>{{item.titulo}}</td><br>
@@ -12,19 +12,27 @@
                 <td>{{item.description}}</td><br>
                 <td>{{item.asignatura}}</td><br>
                 <td>
-                    <button class="btn">Editar</button>
-                    <button class="btn">Delete</button>
+                    <button (click)="edit(item)" class="btn">Editar</button>
+                    <button (click)="deletecursor(item._id)" class=" btn ">Delete</button>
                 </td>
             </tr>
         </tbody>
     </table>
 </body>
 
-<body *ngIf="estudiante" class="btn">
+<body *ngIf="estudiante " class="btn ">
     <h1>Cursos registrados</h1>
-    <table class="table">
+    <table class="table ">
+        <thead>
+            <tr>
+                <th>titulo</th><br>
+                <th>profesor</th><br>
+                <th>descripción</th><br>
+                <th>asignatura</th><br>
+            </tr>
+        </thead>
         <tbody>
-            <tr *ngFor="let item of curso">
+            <tr *ngFor="let item of curso ">
                 <td>{{item.titulo}}</td><br>
                 <td>{{item.profesor}}</td><br>
                 <td>{{item.description}}</td><br>
@@ -35,7 +43,3 @@
         </tbody>
     </table>
 </body>
-<!-- routerLink="/usuarios-nuevo" -->
-
-<!-- (click)="edit(item)" -->
-<!-- (click)="deleteuser(item._id)" -->
