@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router,} from '@angular/router';
-import { UsuarioService } from '../servicios/usuario.service';
+import { GeneralService } from '../servicios/general.service';
 // const updateuser = environment.API_URL+ '/update/';
 @Component({
   selector: 'app-edituser',
@@ -16,7 +16,7 @@ userForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private usuarioService:UsuarioService) { 
+    private usuarioService:GeneralService) { 
     if (sessionStorage.getItem("user")) {
       this.user = JSON.parse(sessionStorage.getItem("user"));
     } else {

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router,NavigationEnd } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { UsuarioService } from '../servicios/usuario.service'
+import { GeneralService } from '../servicios/general.service'
 
 // const createuser = environment.API_URL + '/insert';
 @Component({
@@ -20,7 +20,7 @@ export class UsuariosNuevoComponent implements OnInit {
   private formBuilder: FormBuilder,
   private http: HttpClient,
   private router: Router,
-  private userService: UsuarioService) {
+  private userService: GeneralService) {
     this.navigationSubcription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
         this.spinner.show();
@@ -62,7 +62,7 @@ createuser(){
           edad,
           email,
           passw,
-          rol: 'cliente',
+          rol: 'estudiante',
         },
       };
       let user = this.userService.post('insert',datos)

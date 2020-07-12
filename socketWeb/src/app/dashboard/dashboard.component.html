@@ -1,4 +1,4 @@
-<section class="h-screen w-screen flex justify-center items-center">
+<section *ngIf="admi" class="h-screen w-screen flex justify-center items-center">
     <div class="m-3">
         <button class="bg-white text-gray-800 font-bold rounded border-b-2 border-blue-500 hover:border-blue-600 hover:bg-blue-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" routerLink="/menu">
         <span class="mr-2">Usuarios</span>
@@ -16,5 +16,20 @@
         <span class="mr-2">Matricula</span>
         <i class="fas fa-user-tag"></i>
       </button>
+    </div>
+</section>
+
+<section *ngIf="estudiante" class="h-screen w-screen flex justify-center items-center">
+    <div class="m-3">
+        <button class="bg-white text-gray-800 font-bold rounded border-b-2 border-blue-500 hover:border-blue-600 hover:bg-blue-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" routerLink="/cursos">
+      <span class="mr-2">Cursos</span>
+      <i class="fas fa-university"></i>
+    </button>
+    </div>
+    <div class="m-3">
+        <button class="bg-white text-gray-800 font-bold rounded border-b-2 border-blue-500 hover:border-blue-600 hover:bg-blue-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" routerLink="/matricula">
+      <span class="mr-2">Matricula</span>
+      <i class="fas fa-user-tag"></i>
+    </button>
     </div>
 </section>

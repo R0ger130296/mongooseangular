@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Router,NavigationEnd} from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { WebServiceService } from '../servicios/web.service.service';
-import { UsuarioService } from '../servicios/usuario.service'
+import { GeneralService } from '../servicios/general.service'
 // const getusuarios= environment.API_URL+ '/usuarios';
 // const deleteusuarios = environment.API_URL+ '/usuario_delete/';
 
@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private servidor: WebServiceService,
-    private usuarioServic:UsuarioService) {
+    private usuarioServic:GeneralService) {
       this.url=servidor.getUrl();
     this.navigationSubcription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {

@@ -38,6 +38,7 @@ login():void{
     this.loginServices.login(datalogin).subscribe((data:Datarx)=>{
   if(data.transaccion){
     if(this.permisos.decodificarToken(data.token)){
+      console.log(data.data[0].rol)
       sessionStorage.setItem('rol', JSON.stringify(data.data[0].rol));
       this.router.navigate(['/home']);
     }else{

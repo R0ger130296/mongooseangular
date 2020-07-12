@@ -7,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   user:any[];
-
-  constructor() {  if (sessionStorage.getItem("user")) {
-   this.user =  JSON.parse(sessionStorage.getItem("rol"));
-    console.log(this.user)
+  admi:any[];
+  estudiante:any[];
+  constructor() {  if (sessionStorage.getItem("rol")) {
+   this.user =  JSON.parse(sessionStorage.getItem("rol"))
+    console.log(this.user.length)
+    if(this.user.length===13){
+    this.admi=this.user
+    }if(this.user.length===10){
+    this.estudiante=this.user
+    }
   }
 }
 

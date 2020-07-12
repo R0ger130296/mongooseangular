@@ -11,7 +11,6 @@ const express = require('express'),
 let app = express(),
     session = require('express-session'),
     usuarioRuta = require('../rutas/usuarios.rutas.js'),
-    matriculaRuta = require('../rutas/matricula.rutas'),
     cursoRuta = require('../rutas/curso.rutas'),
     db = connectDb(),
     sess = {
@@ -58,7 +57,6 @@ app.get('/prueba2', (req, res, next) => {
 })
 
 app.use('/api', usuarioRuta)
-app.use('/api', matriculaRuta)
 app.use('/api', cursoRuta)
 
 module.exports = app

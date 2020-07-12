@@ -1,0 +1,41 @@
+<!-- <ngx-spinner bdColor="rgba(180,180,180,0.5)" size="large" color="#ff4242" type="ball-clip-rotate-multiple">
+</ngx-spinner> -->
+
+<body *ngIf="admi" class="btn">
+    <h1>Cursos registrados</h1>
+    <table class="table">
+        <button class="btn">Crear nuevo usuario</button>
+        <tbody>
+            <tr *ngFor="let item of curso">
+                <td>{{item.titulo}}</td><br>
+                <td>{{item.profesor}}</td><br>
+                <td>{{item.description}}</td><br>
+                <td>{{item.asignatura}}</td><br>
+                <td>
+                    <button class="btn">Editar</button>
+                    <button class="btn">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+<body *ngIf="estudiante" class="btn">
+    <h1>Cursos registrados</h1>
+    <table class="table">
+        <tbody>
+            <tr *ngFor="let item of curso">
+                <td>{{item.titulo}}</td><br>
+                <td>{{item.profesor}}</td><br>
+                <td>{{item.description}}</td><br>
+                <td>{{item.asignatura}}</td><br>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<!-- routerLink="/usuarios-nuevo" -->
+
+<!-- (click)="edit(item)" -->
+<!-- (click)="deleteuser(item._id)" -->

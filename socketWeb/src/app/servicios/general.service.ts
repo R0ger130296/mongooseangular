@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class GeneralService {
 private url:string;
   constructor(private http:HttpClient,
     private servidor: WebServiceService,

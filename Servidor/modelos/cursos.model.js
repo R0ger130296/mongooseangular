@@ -5,10 +5,9 @@ const { Schema } = mongoose;
 
 const cursos_model = new Schema({
     titulo: { type: String },
-    professor: { type: String },
+    profesor: { type: String },
     description: { type: String },
     asignatura: { type: String },
-    participants: { type: Array },
     sessionID: { type: String },
     createAt: { type: Date },
 });

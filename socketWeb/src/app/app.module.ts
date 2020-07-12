@@ -9,12 +9,14 @@ import {appRoutingModule} from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { EdituserComponent } from './edituser/edituser.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MenuCursosComponent } from './menu-cursos/menu-cursos.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     EdituserComponent,
     DashboardComponent,
+    MenuCursosComponent,
   ],
   imports: [
     BrowserModule,
