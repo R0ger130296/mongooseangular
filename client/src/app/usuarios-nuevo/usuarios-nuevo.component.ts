@@ -84,7 +84,6 @@ export class UsuariosNuevoComponent implements OnInit {
           timer: 2000,
         });
       } else {
-       let file= sessionStorage.getItem('imagen');
         let datos = {
           data: {
             nombre,
