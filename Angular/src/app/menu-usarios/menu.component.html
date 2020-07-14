@@ -2,20 +2,28 @@
 </ngx-spinner>
 
 <body class="btn">
-    <h1>Usuarios registrados</h1>
-    <table class="table">
-        <button class="btn" routerLink="/usuarios-nuevo">Crear nuevo usuario</button>
+    <h1 class="max-w-sm font-bold text-xl mb-2 rounded-full fill-current">Usuarios registrados</h1>
+    <table class="block text-gray-700 text-sm font-bold mb-2">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" routerLink="/usuarios-nuevo">Crear nuevo usuario</button>
+        <thead>
+            <tr>
+                <th>Nombre</th><br>
+                <th>Apellido</th><br>
+                <th>Correo</th><br>
+                <th>Edad</th><br>
+                <th>Rol</th><br><br><br>
+            </tr>
+        </thead>
         <tbody>
-            <tr *ngFor="let item of user">
+            <tr class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight" *ngFor="let item of user">
                 <td>{{item.nombre}}</td><br>
                 <td>{{item.apellido}}</td><br>
                 <td>{{item.email}}</td><br>
                 <td>{{item.edad}}</td><br>
-                <td>{{item.rol}}</td><br>
-                <img src="{{file}}">
+                <td>{{item.rol}}</td><br><br><br>
                 <td>
-                    <button class="btn" (click)="edit(item)">Editar</button>
-                    <button class="btn" (click)="deleteuser(item._id)">Delete</button>
+                    <button class="bg-green-500  text-white font-bold py-2 px-4 rounded-full" (click)="edit(item)">Editar</button>
+                    <button class="bg-red-500  text-white font-bold py-2 px-4 rounded-full" (click)="deleteuser(item._id)">Delete</button>
                 </td>
             </tr>
         </tbody>

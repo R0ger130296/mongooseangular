@@ -2,18 +2,26 @@
 </ngx-spinner> -->
 
 <body *ngIf="admi" class="btn">
-    <h1>Cursos registrados</h1>
-    <table class="table">
-        <button routerLink="/crear-curso" class="btn">Crear nuevo usuario</button>
+    <h1 class="max-w-sm font-bold text-xl mb-2 rounded-full fill-current">Cursos registrados</h1>
+    <table class="block text-gray-700 text-sm font-bold mb-2">
+        <button routerLink="/crear-curso" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Crear nuevo usuario</button>
+        <thead>
+            <tr>
+                <th>Titulo</th><br>
+                <th>Profesor</th><br>
+                <th>Descripción</th><br>
+                <th>Asignatura</th><br><br>
+            </tr>
+        </thead>
         <tbody>
-            <tr *ngFor="let item of curso">
+            <tr class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight" *ngFor="let item of curso">
                 <td>{{item.titulo}}</td><br>
                 <td>{{item.profesor}}</td><br>
                 <td>{{item.description}}</td><br>
                 <td>{{item.asignatura}}</td><br>
                 <td>
-                    <button (click)="edit(item)" class="btn">Editar</button>
-                    <button (click)="deletecursor(item._id)" class=" btn ">Delete</button>
+                    <button class="bg-green-500  text-white font-bold py-2 px-4 rounded-full" (click)="edit(item)">Editar</button>
+                    <button (click)="deletecursor(item._id)" class="bg-red-500  text-white font-bold py-2 px-4 rounded-full">Delete</button>
                 </td>
             </tr>
         </tbody>
@@ -21,8 +29,8 @@
 </body>
 
 <body *ngIf="estudiante " class="btn ">
-    <h1>Cursos registrados</h1>
-    <table class="table ">
+    <h1 class="max-w-sm font-bold text-xl mb-2 rounded-full fill-current">Cursos registrados</h1>
+    <table class="block text-gray-700 text-sm font-bold mb-2">
         <thead>
             <tr>
                 <th>titulo</th><br>
@@ -32,7 +40,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of curso ">
+            <tr class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight" *ngFor="let item of curso ">
                 <td>{{item.titulo}}</td><br>
                 <td>{{item.profesor}}</td><br>
                 <td>{{item.description}}</td><br>

@@ -1,27 +1,31 @@
-<div class="max-w-sm rounded overflow-hidden shadow-lg">
-
-    <section *ngIf="estudiante">
-        <div class="m-3">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" routerLink="/cursos">
+<ul *ngIf="estudiante" class="flex w-full items-center justify-center">
+    <li class="mr-6">
+        <a class="text-blue-500 hover:text-blue-800">
+            <section>
+                <div class="m-3">
+                    <button type="button" routerLink="/cursos">
       <span class="mr-2">Cursos</span>
     </button>
-        </div>
-    </section>
-</div>
-
-
-
-<div class="max-w-sm rounded overflow-hidden shadow-lg">
-    <section class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" *ngIf="admi">
-        <div class="m-3">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" routerLink="/menu">
+                </div>
+            </section>
+        </a>
+    </li>
+</ul>
+<ul *ngIf="admi" class="flex w-full items-center justify-center">
+    <li class="mr-6">
+        <a class="text-blue-500 hover:text-blue-800">
+            <section type="button">
+                <div class="m-3">
+                    <button type="button" routerLink="/menu">
         <span class="mr-2">Usuarios</span>
       </button>
-        </div>
-        <div class="m-3">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" routerLink="/cursos">
+                </div>
+                <div class="m-3">
+                    <button type="button" routerLink="/cursos">
         <span class="mr-2">Cursos</span>
       </button>
-        </div>
-    </section>
-</div>
+                </div>
+            </section>
+        </a>
+    </li>
+</ul>
