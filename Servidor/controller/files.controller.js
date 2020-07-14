@@ -5,7 +5,6 @@ fs = require('fs'),
 
 let uploadFile = (req, res) => {
     let file = req.files.uploadFile
-    console.log(file)
     if (file.originalFilename == '' || !file.originalFilename) {
         fs.unlinkSync(file.path)
         return res.status(400).json({

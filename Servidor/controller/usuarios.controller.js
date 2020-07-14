@@ -182,7 +182,7 @@ let login = (req, res) => {
                         sessionID: data[0].sessionID,
                     };
                 bcrypt.compareSync(password, data[0].passw) ?
-                    ((token = jwt.sign({ data: tokenBody }, process.env.KEY_JWT, console.log(token), {
+                    ((token = jwt.sign({ data: tokenBody }, process.env.KEY_JWT, {
                             algorithm: "HS256",
                             expiresIn: 60000,
                         })),

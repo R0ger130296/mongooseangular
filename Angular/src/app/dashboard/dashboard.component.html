@@ -1,0 +1,27 @@
+<div class="max-w-sm rounded overflow-hidden shadow-lg">
+
+    <section *ngIf="estudiante">
+        <div class="m-3">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" routerLink="/cursos">
+      <span class="mr-2">Cursos</span>
+    </button>
+        </div>
+    </section>
+</div>
+
+
+
+<div class="max-w-sm rounded overflow-hidden shadow-lg">
+    <section class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" *ngIf="admi">
+        <div class="m-3">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" routerLink="/menu">
+        <span class="mr-2">Usuarios</span>
+      </button>
+        </div>
+        <div class="m-3">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" routerLink="/cursos">
+        <span class="mr-2">Cursos</span>
+      </button>
+        </div>
+    </section>
+</div>

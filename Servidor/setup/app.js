@@ -12,6 +12,7 @@ let app = express(),
     session = require('express-session'),
     usuarioRuta = require('../rutas/usuarios.rutas.js'),
     cursoRuta = require('../rutas/curso.rutas'),
+    fileRuta = require('../rutas/files.rutas'),
     db = connectDb(),
     sess = {
         secret: process.env.KEY_SESSION,
@@ -58,5 +59,6 @@ app.get('/prueba2', (req, res, next) => {
 
 app.use('/api', usuarioRuta)
 app.use('/api', cursoRuta)
+app.use('/api', fileRuta)
 
 module.exports = app

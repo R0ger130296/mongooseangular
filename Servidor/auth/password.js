@@ -14,7 +14,6 @@ let codificar = (req, res, next) => {
             req.body.data.passw = codificarpassword
             req.body.data.createAt = new Date()
             req.body.data.sessionID = req.sessionID
-            console.log(req.body.data.sessionID);
             next();
         } else {
             return res.status(401).send('no se encrypto su contraseña')
